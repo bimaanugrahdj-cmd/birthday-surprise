@@ -1,0 +1,1122 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#fff0f5">
+<title>HAPPY BIRTHDAY !</title>
+
+<style>
+:root {
+  --pink: #ff7fa8;
+  --deep: #d94f82;
+  --pale: #fff0f5;
+  --ink: #58384a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: linear-gradient(145deg, #fff5f8, #fdf1ff 55%, #fff8ef);
+  color: var(--ink);
+  font-family: "Trebuchet MS", system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border: 0;
+}
+
+main {
+  width: min(100%, 760px);
+  margin: auto;
+  padding: 22px 18px 70px;
+  position: relative;
+  z-index: 1;
+}
+
+.screen {
+  min-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 30px 10px;
+}
+
+.eyebrow {
+  font-size: .78rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: #bd7292;
+  font-weight: 800;
+}
+
+h1 {
+  font-size: clamp(2.2rem, 9vw, 4.4rem);
+  line-height: 1.05;
+  margin: 12px 0;
+  color: #d95789;
+}
+
+h2 {
+  font-size: clamp(1.7rem, 6vw, 2.5rem);
+  color: #d95789;
+}
+
+p {
+  line-height: 1.75;
+}
+
+.sub {
+  max-width: 480px;
+  color: #886879;
+}
+
+.btn {
+  background: linear-gradient(135deg, #ff8eb3, #e96d9b);
+  color: white;
+  padding: 14px 24px;
+  border-radius: 999px;
+  font-weight: 800;
+  box-shadow: 0 9px 22px #e96d9b45;
+  transition: .2s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn.secondary {
+  background: #fff;
+  color: #c75d89;
+  border: 1px solid #ffd1e0;
+  box-shadow: none;
+}
+
+.card {
+  background: #ffffffc9;
+  border: 1px solid white;
+  border-radius: 26px;
+  padding: 24px;
+  box-shadow: 0 14px 40px #c8799820;
+  width: 100%;
+}
+
+.pixel-heart {
+  display: grid;
+  grid-template-columns: repeat(9, min(7vw, 25px));
+  gap: 4px;
+  margin: 25px auto;
+}
+
+.pixel {
+  width: min(7vw, 25px);
+  aspect-ratio: 1;
+  background: #f8dce7;
+  border-radius: 4px;
+  transition: background .18s, transform .18s;
+}
+
+.pixel.on {
+  background: #ff6598;
+  box-shadow: 0 2px 7px #ff659855;
+  transform: scale(1.03);
+}
+
+.progress-wrap {
+  height: 13px;
+  background: #f7dce7;
+  border-radius: 99px;
+  overflow: hidden;
+  margin: 15px 0 8px;
+}
+
+.progress {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, #ff9cbd, #e95791);
+  border-radius: 99px;
+  transition: width .15s;
+}
+
+.percent {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #df5c8e;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* FLOATING DECORATION */
+
+.float {
+  position: fixed;
+  pointer-events: none;
+  z-index: 0;
+  opacity: .55;
+  animation: drift 8s linear infinite;
+}
+
+@keyframes drift {
+  0% {
+    transform: translateY(105vh) rotate(0);
+    opacity: 0;
+  }
+  15% {
+    opacity: .6;
+  }
+  100% {
+    transform: translateY(-15vh) rotate(35deg);
+    opacity: 0;
+  }
+}
+
+/* PILL */
+
+.pill {
+  display: inline-block;
+  background: #fff0f5;
+  border: 1px solid #ffd5e3;
+  border-radius: 99px;
+  padding: 7px 13px;
+  color: #c45b87;
+  font-size: .8rem;
+  font-weight: 700;
+}
+
+/* MEMORY PHOTO GALLERY */
+
+.memory-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-top: 22px;
+  width: 100%;
+}
+
+.memory {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  background: white;
+  padding: 8px;
+  box-shadow: 0 8px 22px #c8799825;
+  transition: transform .3s ease;
+}
+
+.memory:hover {
+  transform: translateY(-5px);
+}
+
+.memory img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  border-radius: 14px;
+}
+
+@media (max-width: 520px) {
+  .memory img {
+    height: 180px;
+  }
+}
+
+/* LOVE LETTER */
+
+.note {
+  background: #fff9fc;
+  border: 1px dashed #f1a8c2;
+  border-radius: 18px;
+  padding: 22px;
+  text-align: left;
+  white-space: pre-line;
+  line-height: 1.9;
+  width: 100%;
+}
+
+.envelope {
+  font-size: 4rem;
+  animation: bob 2s ease-in-out infinite;
+}
+
+@keyframes bob {
+  50% {
+    transform: translateY(-9px);
+  }
+}
+
+/* HEART */
+
+#finalHeart {
+  font-size: 5rem;
+  animation: pulse 1.2s infinite;
+}
+
+@keyframes pulse {
+  50% {
+    transform: scale(1.15);
+  }
+}
+
+/* FLOWER RAIN */
+
+.flower {
+  position: fixed;
+  top: -60px;
+  left: 0;
+  z-index: 9999;
+  pointer-events: none;
+  user-select: none;
+  will-change: transform, opacity;
+  filter: drop-shadow(0 2px 3px rgba(200,100,140,.2));
+  animation: flowerFall linear forwards;
+}
+
+@keyframes flowerFall {
+  0% {
+    transform: translate3d(0, -10vh, 0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: .95;
+  }
+  30% {
+    transform: translate3d(var(--sway), 30vh, 0) rotate(120deg);
+  }
+  60% {
+    transform: translate3d(calc(var(--sway) * -0.6), 65vh, 0) rotate(260deg);
+  }
+  100% {
+    transform: translate3d(var(--sway), 110vh, 0) rotate(420deg);
+    opacity: 0;
+  }
+}
+
+/* FOOTER */
+
+footer {
+  text-align: center;
+  color: #b18499;
+  font-size: .8rem;
+  padding: 25px 0;
+}
+
+/* MOBILE RESPONSIVE */
+
+@media(max-width: 520px) {
+  .memory-grid {
+    gap: 9px;
+  }
+
+  .memory {
+    min-height: 125px;
+  }
+
+  .card {
+    padding: 19px;
+  }
+}
+
+@media(prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .float,
+  .envelope,
+  #finalHeart,
+  .flower {
+    animation-duration: .01ms !important;
+  }
+}
+
+/* =================================
+   FINAL RING SCENE
+================================= */
+
+#ringEnding {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: radial-gradient(circle, #32101f, #080308 75%);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+#ringEnding.active {
+  display: flex;
+  animation: fadeIn .8s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* RING SCENE */
+
+.ring-scene {
+  position: relative;
+  text-align: center;
+  z-index: 2;
+}
+
+.ring-box {
+  position: relative;
+  width: 230px;
+  height: 220px;
+  margin: auto;
+}
+
+.box-base {
+  position: absolute;
+  bottom: 15px;
+  left: 35px;
+  width: 160px;
+  height: 95px;
+  border-radius: 12px 12px 25px 25px;
+  background: linear-gradient(135deg, #b51e50, #650d2c);
+  box-shadow: 0 20px 50px #0009;
+}
+
+.box-lid {
+  position: absolute;
+  top: 55px;
+  left: 35px;
+  width: 160px;
+  height: 35px;
+  border-radius: 9px;
+  background: linear-gradient(135deg, #ff9bbd, #b51e50);
+  transform-origin: left bottom;
+  animation: openBox 1.8s ease 1s forwards;
+}
+
+@keyframes openBox {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(-115deg) translateY(-20px);
+  }
+}
+
+/* DIAMOND RING */
+
+.diamond-ring {
+  position: absolute;
+  width: 100px;
+  height: 130px;
+  left: 65px;
+  bottom: 55px;
+  opacity: 0;
+  transform: translateY(65px) scale(.4);
+  animation: ringRise 2s ease 2.2s forwards;
+}
+
+@keyframes ringRise {
+  0% {
+    opacity: 0;
+    transform: translateY(65px) scale(.4) rotate(-20deg);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-35px) scale(1.15) rotate(10deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(-45px) scale(1) rotate(0);
+  }
+}
+
+.ring-band {
+  position: absolute;
+  width: 65px;
+  height: 65px;
+  left: 17px;
+  top: 42px;
+  border: 10px solid #e7b84c;
+  border-radius: 50%;
+  transform: rotate(-20deg);
+  box-shadow:
+    0 0 8px #ffdf83,
+    inset 0 0 6px #fff2b0,
+    0 0 25px #f7c75e;
+}
+
+.ring-diamond {
+  position: absolute;
+  width: 31px;
+  height: 31px;
+  left: 34px;
+  top: 15px;
+  background: linear-gradient(135deg, #fff, #9ceaff, #fff);
+  transform: rotate(45deg);
+  border: 2px solid #fff;
+  box-shadow: 0 0 15px #b9f4ff, 0 0 35px #fff;
+  animation: diamondGlow 1.5s infinite alternate;
+}
+
+@keyframes diamondGlow {
+  from {
+    filter: brightness(1);
+    box-shadow: 0 0 10px #b9f4ff;
+  }
+  to {
+    filter: brightness(1.8);
+    box-shadow: 0 0 30px #fff, 0 0 55px #a8eaff;
+  }
+}
+
+.diamond-sparkle {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  color: white;
+  font-size: 28px;
+  animation: sparkle 1s infinite alternate;
+}
+
+@keyframes sparkle {
+  from {
+    opacity: .2;
+    transform: scale(.6) rotate(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1.4) rotate(45deg);
+  }
+}
+
+/* RING MESSAGE */
+
+.ring-message {
+  color: #ffdce8;
+  font-size: 23px;
+  font-family: Georgia, serif;
+  margin-top: 10px;
+  opacity: 0;
+  animation: messageAppear 1.5s ease 3.5s forwards;
+  text-shadow: 0 0 15px #ff6b9d;
+}
+
+@keyframes messageAppear {
+  to {
+    opacity: 1;
+    transform: translateY(-5px);
+  }
+}
+
+/* CLOSE BUTTON */
+
+.close-ring {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  padding: 11px 20px;
+  border: 1px solid #ffc4d8;
+  border-radius: 30px;
+  background: #ffffff18;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  opacity: 0;
+  animation: showClose .8s ease 4.5s forwards;
+  z-index: 100001;
+  pointer-events: auto;
+}
+
+@keyframes showClose {
+  to { opacity: 1; }
+}
+
+/* ROSE RAIN */
+
+.rose-rain {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.falling-rose {
+  position: absolute;
+  top: -50px;
+  animation: roseFall linear forwards;
+  pointer-events: none;
+}
+
+@keyframes roseFall {
+  to {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .ring-message {
+    font-size: 19px;
+  }
+
+  .close-ring {
+    top: 18px;
+    right: 18px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<main>
+
+<!-- HALAMAN PEMBUKA -->
+
+<section class="screen" id="intro">
+  <div style="font-size:3rem;margin-top:24px">
+    🎀 🌷 ✨
+  </div>
+
+  <h1>Hi<br>Praya Nadia</h1>
+
+  <p class="sub">
+    aku punya kado kecil buat kamu hehe, semoga sukak
+  </p>
+
+  <button class="btn" id="startBtn">
+    buka pelan pelan
+  </button>
+</section>
+
+<!-- LOADING PIXEL -->
+
+<section class="screen hidden" id="loading">
+  <h2>LOADING SABAR 😠</h2>
+
+  <div class="pixel-heart" id="pixelHeart"></div>
+
+  <div class="card" style="max-width:390px">
+    <div class="percent" id="percent">0%</div>
+
+    <div class="progress-wrap">
+      <div class="progress" id="progress"></div>
+    </div>
+
+    <small id="loadingText">
+      ...........
+    </small>
+  </div>
+</section>
+
+<!-- HALAMAN KEJUTAN -->
+
+<section class="screen hidden" id="reveal">
+  <div id="finalHeart">💗</div>
+
+  <p class="eyebrow">Loading Complete</p>
+
+  <h1>SURPRISE SAYANG</h1>
+
+  <button class="btn" id="continueBtn">
+    coba liat ada apa
+  </button>
+</section>
+
+<!-- HALAMAN KENANGAN -->
+
+<section class="screen hidden" id="memories">
+  <h2>Hal-hal kecil tentang kita ♡</h2>
+
+  <p class="sub">
+    BEST MOMENT
+  </p>
+
+  <div class="memory-grid">
+    <div class="memory">
+      <img src="images/foto1.jpeg" alt="Kenangan pertama">
+    </div>
+
+    <div class="memory">
+      <img src="images/foto2.jpeg" alt="Kenangan kedua">
+    </div>
+
+    <div class="memory">
+      <img src="images/foto3.jpeg" alt="Kenangan ketiga">
+    </div>
+
+    <div class="memory">
+      <img src="images/foto4.jpeg" alt="Kenangan keempat">
+    </div>
+  </div>
+
+  <button class="btn" id="letterBtn">
+    Ada surat untukmu 💌
+  </button>
+</section>
+
+<!-- HALAMAN SURAT -->
+
+<section class="screen hidden" id="letter">
+  <div class="envelope">💌</div>
+
+  <p class="eyebrow">a letter from me to you</p>
+
+  <h2>thanks for always believing me</h2>
+
+  <div class="note" id="loveNote">Happy birthday bbyyyy! ❤️🥳
+
+Selamat ulang tahun yaa sayangkuu. Semoga di umur yang sekarang bby selalu dikasih kesehatan, panjang umur, bahagia terus, dan selalu dikelilingi hal-hal baik. Semoga apa pun yang lagi bby usahain sekarang bisa berjalan lancar dan hasilnya sesuai sama yang bby harapin.
+
+Aku berharap banget ke depannya bby makin sukses dalam segala hal, baik maupun semua impian yang pengen bby capai. Jangan pernah ngerasa sendiri atau ngerasa nggak mampu yaa. Kalau ada hari yang berat, kalau lagi capek atau banyak pikiran, jangan lupa buat istirahat. Nggak harus semuanya berjalan sempurna, yang penting bby jangan gampang nyerah. Aku percaya bby pasti bisa ngelewatin semuanya.
+
+Semoga rezeki bby makin lancar, semua urusannya dipermudah, dan apa yang selama ini bby doain satu per satu bisa jadi kenyataan. Aku juga berharap rezeki kita berdua cepet dilancarin yaa, supaya apa yang selama ini kita rencanain bisa segera terwujud. Aku pengen banget bisa cepet nikahin bby, nemenin bby terus.
+
+Makasih yaa bby udah hadir di hidup aku. Aku seneng bisa punya bby dan semoga kita bisa terus bareng-bareng, saling support, saling ngerti, saling nguatin, dan nggak gampang nyerah satu sama lain. Aku mungkin belum bisa kasih semua yang bby pengen sekarang, tapi aku mau terus berusaha supaya suatu hari nanti aku bisa bahagiain bby.
+
+Pokoknya bby harus sehat terus, jangan sering-sering sakit dan jangan pernah berhenti percaya sama diri sendiri. aku pengen jadi orang yang ada di samping bby ngerealisasiin semua itu tercapai.
+
+Sekali lagi happy birthday, bby sayanggg. I love you so muchhh!</div>
+
+  <button class="btn" id="lastBtn" style="margin-top:22px">
+    Satu hal lagi... ✨
+  </button>
+</section>
+
+<!-- HALAMAN PENUTUP -->
+
+<section class="screen hidden" id="ending">
+  <div id="finalHeart">💞</div>
+
+  <h1>PROUD OF YOU<br>AND LOVE YOU</h1>
+
+  <p class="sub">
+    Dan semoga, kita masih punya banyak cerita
+    untuk ditulis bersama.
+  </p>
+
+  <p style="font-size:1.5rem;color:#df5c8e">
+    I love you ♡
+  </p>
+
+  <button class="btn secondary" id="replayBtn">
+    Restart
+  </button>
+</section>
+
+<footer>
+  made with ♡, pixel by pixel
+</footer>
+
+</main>
+
+<!-- ANIMASI CINCIN: DILETAKKAN SEBELUM SCRIPT -->
+
+<div id="ringEnding">
+  <div class="rose-rain" id="roseRain"></div>
+
+  <button type="button" id="closeRing" class="close-ring">
+    ✕ Close
+  </button>
+
+  <div class="ring-scene">
+    <div class="ring-box">
+      <div class="box-base"></div>
+      <div class="box-lid"></div>
+
+      <div class="diamond-ring">
+        <div class="ring-band"></div>
+        <div class="ring-diamond"></div>
+        <div class="diamond-sparkle">✦</div>
+      </div>
+    </div>
+
+    <p class="ring-message">LOVE YOU PRAYA</p>
+  </div>
+</div>
+
+<script>
+
+// =================================
+// FUNGSI PINDAH HALAMAN
+// =================================
+
+const $ = id => document.getElementById(id);
+
+const screens = [
+  'intro',
+  'loading',
+  'reveal',
+  'memories',
+  'letter',
+  'ending'
+];
+
+function show(id) {
+  screens.forEach(s => {
+    $(s).classList.toggle('hidden', s !== id);
+  });
+
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+}
+
+// =================================
+// MEMBUAT PIXEL HEART
+// =================================
+
+const pattern = [
+  '001001100',
+  '011111110',
+  '111111111',
+  '111111111',
+  '011111110',
+  '001111100',
+  '000111000',
+  '000010000',
+  '000000000'
+];
+
+const pixels = [];
+
+pattern.forEach(row => {
+  [...row].forEach(v => {
+    const el = document.createElement('div');
+    el.className = 'pixel';
+
+    $('pixelHeart').appendChild(el);
+
+    pixels.push({
+      el,
+      on: v === '1'
+    });
+  });
+});
+
+// =================================
+// MUSIK INSTRUMENTAL
+// =================================
+
+let audioCtx = null;
+let musicTimer = null;
+let musicOn = false;
+
+function startMusic() {
+  try {
+    audioCtx = audioCtx ||
+      new (window.AudioContext || window.webkitAudioContext)();
+
+    if (audioCtx.state === 'suspended') {
+      audioCtx.resume();
+    }
+
+    musicOn = true;
+
+    const notes = [
+      523.25, 659.25, 783.99, 659.25,
+      587.33, 698.46, 783.99, 698.46
+    ];
+
+    let i = 0;
+
+    const play = () => {
+      if (!musicOn || !audioCtx) return;
+
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+
+      osc.type = 'sine';
+      osc.frequency.value = notes[i++ % notes.length];
+
+      gain.gain.setValueAtTime(.0001, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(.055, audioCtx.currentTime + .04);
+      gain.gain.exponentialRampToValueAtTime(.0001, audioCtx.currentTime + .48);
+
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+
+      osc.start();
+      osc.stop(audioCtx.currentTime + .5);
+    };
+
+    play();
+    musicTimer = setInterval(play, 520);
+
+  } catch(e) {
+    console.log('Audio tidak tersedia.');
+  }
+}
+
+function stopMusic() {
+  musicOn = false;
+
+  if (musicTimer) {
+    clearInterval(musicTimer);
+  }
+
+  musicTimer = null;
+}
+
+// =================================
+// FLOWER RAIN ANIMATION
+// =================================
+
+let flowerRainInterval = null;
+
+const flowerTypes = [
+  '🌸', '🌸', '🌷', '🌺',
+  '🌼', '✿', '❀', '🌸'
+];
+
+function createFlower() {
+  const flower = document.createElement('span');
+
+  flower.className = 'flower';
+  flower.textContent = flowerTypes[
+    Math.floor(Math.random() * flowerTypes.length)
+  ];
+
+  flower.style.left = Math.random() * 100 + 'vw';
+  flower.style.fontSize = (15 + Math.random() * 22) + 'px';
+  flower.style.animationDuration = (5 + Math.random() * 5) + 's';
+
+  const sway = Math.random() * 100 - 50;
+  flower.style.setProperty('--sway', sway + 'px');
+
+  document.body.appendChild(flower);
+
+  flower.addEventListener('animationend', () => {
+    flower.remove();
+  }, { once: true });
+}
+
+function startFlowerRain() {
+  if (flowerRainInterval) return;
+
+  for (let i = 0; i < 15; i++) {
+    setTimeout(createFlower, i * 150);
+  }
+
+  flowerRainInterval = setInterval(() => {
+    createFlower();
+  }, 300);
+}
+
+function stopFlowerRain() {
+  clearInterval(flowerRainInterval);
+  flowerRainInterval = null;
+
+  document.querySelectorAll('.flower').forEach(flower => {
+    flower.remove();
+  });
+}
+
+// =================================
+// LOADING PIXEL HEART
+// =================================
+
+let loadingTimer = null;
+
+$('startBtn').addEventListener('click', () => {
+  startMusic();
+  show('loading');
+
+  let p = 0;
+
+  if (loadingTimer) {
+    clearInterval(loadingTimer);
+  }
+
+  loadingTimer = setInterval(() => {
+    p = Math.min(100, p + 1);
+
+    $('percent').textContent = p + '%';
+    $('progress').style.width = p + '%';
+
+    const active = Math.round(p / 100 * pixels.length);
+
+    pixels.forEach((item, index) => {
+      if (item.on && index < active) {
+        item.el.classList.add('on');
+      }
+    });
+
+    if (p === 25) {
+      $('loadingText').textContent = 'Menghitung semua senyuman...';
+    }
+
+    if (p === 55) {
+      $('loadingText').textContent = 'Menyimpan momen-momen indah...';
+    }
+
+    if (p === 82) {
+      $('loadingText').textContent = 'Hampir selesai, tunggu sebentar ya...';
+    }
+
+    if (p >= 100) {
+      clearInterval(loadingTimer);
+      loadingTimer = null;
+
+      setTimeout(() => {
+        show('reveal');
+        startFlowerRain();
+      }, 800);
+    }
+  }, 35);
+});
+
+// =================================
+// NAVIGASI HALAMAN
+// =================================
+
+$('continueBtn').onclick = () => show('memories');
+
+$('letterBtn').onclick = () => show('letter');
+
+$('lastBtn').onclick = () => {
+  show('ending');
+  showRingEnding();
+};
+
+// =================================
+// ANIMASI CINCIN DAN HUJAN MAWAR
+// =================================
+
+let roseRainInterval = null;
+let roseTimeouts = [];
+
+function showRingEnding() {
+  const ending = $('ringEnding');
+  const rain = $('roseRain');
+
+  // Bersihkan animasi sebelumnya
+  if (roseRainInterval) {
+    clearInterval(roseRainInterval);
+    roseRainInterval = null;
+  }
+
+  roseTimeouts.forEach(timeout => clearTimeout(timeout));
+  roseTimeouts = [];
+
+  rain.innerHTML = '';
+
+  // Reset animasi CSS agar bisa dimainkan ulang
+  ending.classList.remove('active');
+
+  // Memaksa browser menerapkan reset animasi
+  void ending.offsetWidth;
+
+  ending.classList.add('active');
+
+  function createRose() {
+    const rose = document.createElement('div');
+
+    rose.className = 'falling-rose';
+    rose.textContent = '🌹';
+    rose.style.left = Math.random() * 100 + 'vw';
+    rose.style.fontSize = (18 + Math.random() * 25) + 'px';
+    rose.style.animationDuration = (4 + Math.random() * 5) + 's';
+
+    rain.appendChild(rose);
+
+    setTimeout(() => rose.remove(), 9000);
+  }
+
+  for (let i = 0; i < 25; i++) {
+    const timeout = setTimeout(createRose, i * 150);
+    roseTimeouts.push(timeout);
+  }
+
+  roseRainInterval = setInterval(createRose, 400);
+}
+
+// =================================
+// FUNGSI CLOSE CINCIN
+// =================================
+
+function closeRingEnding() {
+  const ending = $('ringEnding');
+  const rain = $('roseRain');
+
+  ending.classList.remove('active');
+
+  if (roseRainInterval) {
+    clearInterval(roseRainInterval);
+    roseRainInterval = null;
+  }
+
+  roseTimeouts.forEach(timeout => clearTimeout(timeout));
+  roseTimeouts = [];
+
+  rain.innerHTML = '';
+}
+
+// Tombol Close
+$('closeRing').addEventListener('click', closeRingEnding);
+
+// =================================
+// TOMBOL ULANGI
+// =================================
+
+$('replayBtn').onclick = () => {
+  // Tutup animasi cincin
+  closeRingEnding();
+
+  stopMusic();
+  stopFlowerRain();
+
+  if (loadingTimer) {
+    clearInterval(loadingTimer);
+    loadingTimer = null;
+  }
+
+  $('percent').textContent = '0%';
+  $('progress').style.width = '0%';
+
+  pixels.forEach(x => {
+    x.el.classList.remove('on');
+  });
+
+  $('loadingText').textContent = 'Menyiapkan hal-hal manis...';
+
+  show('intro');
+};
+
+// =================================
+// ANIMASI HATI MELAYANG
+// =================================
+
+for (let i = 0; i < 12; i++) {
+  const f = document.createElement('div');
+
+  f.className = 'float';
+  f.textContent = ['♡', '✦', '♥', '✿'][i % 4];
+
+  f.style.left = (Math.random() * 100) + '%';
+  f.style.animationDelay = (Math.random() * 8) + 's';
+  f.style.animationDuration = (7 + Math.random() * 7) + 's';
+  f.style.fontSize = (14 + Math.random() * 17) + 'px';
+
+  document.body.appendChild(f);
+}
+
+</script>
+</body>
+</html>
